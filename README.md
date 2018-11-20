@@ -6,5 +6,4 @@ The code has been extended (from the one described in the blog) with support for
 
 This project forms the blockchain backend for HERC-IGVC product with the frontend deployed [here](https://igvc.herc.one). 
 
-Quickstart is available here: https://github.com/hercone/herc-igvc-registrar/blob/master/HERCIGVC-QUICKSTART-EN.md
 
