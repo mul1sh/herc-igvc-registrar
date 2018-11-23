@@ -9,4 +9,5 @@ This project forms the blockchain backend for HERC-IGVC product with the fronten
 Mainnet [Contract](https://etherscan.io/address/0x73b0856356279bdeaea503873eb8033f7311c671) Deployed : 0x73b0856356279BdeAea503873EB8033F7311C671
 
 
+[Tutorial Quickstart Guide](https://github.com/radek1st/ens-subdomain-factory/blob/master/TENZ-ID-QUICKSTART-EN.md)
 
