@@ -8,8 +8,8 @@ DApp = {
 	//factoryAddress: "0x9fbda871d559710256a2502a2517b794b482db40",
 
 	// Mainnet
-    factoryAddress: "0xA202F2D44302CC0e68Ee7E230C0E038b96ABC96B",
-
+    factoryAddress: "0x73b0856356279BdeAea503873EB8033F7311C671",
+					//0x73b0856356279BdeAea503873EB8033F7311C671
 	init: function() {
 		console.log('[x] Initializing DApp.');
 		this.initWeb3();
