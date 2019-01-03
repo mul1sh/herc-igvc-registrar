@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "lite-server": "^2.3.0"
+    "lite-server": "^2.4.0"
   },
   "requires": true,
   "lockfileVersion": 1,
@@ -32,6 +32,6 @@
       "resolved": "https://registry.npmjs.org/punycode/-/punycode-2.1.0.tgz",
       "version": "2.1.0"
     },
-    "web3": "^1.0.0-beta.35"
+    "web3": "^1.0.0-beta.37"
   }
 }

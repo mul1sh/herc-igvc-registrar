@@ -1,15 +1,15 @@
 DApp = {
 	
 	factoryContract: null,
-	factoryAbi: [{"constant":true,"inputs":[{"name":"node","type":"bytes32"}],"name":"resolver","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"node","type":"bytes32"}],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"label","type":"bytes32"},{"name":"owner","type":"address"}],"name":"setSubnodeOwner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"resolver","type":"address"}],"name":"setResolver","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"owner","type":"address"}],"name":"setOwner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],
+	factoryAbi: [{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"isOwner","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"constant":false,"inputs":[{"name":"_orgName","type":"bytes32"},{"name":"_hercId","type":"uint256"},{"name":"_fctChain","type":"bytes32"}],"name":"registerNewAsset","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getAssetsCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_hercIden","type":"uint256"}],"name":"getAsset","outputs":[{"name":"","type":"uint256"},{"name":"","type":"bytes32"},{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_orgName","type":"bytes32"},{"name":"_hercId","type":"uint256"},{"name":"_codeWord","type":"bytes32"},{"name":"_origTransFctHash","type":"bytes32"}],"name":"newOrigTrans","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOriginTransCountByAddress","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_codeWord","type":"bytes32"}],"name":"getOriginTransByCodeWord","outputs":[{"name":"","type":"bytes32"},{"name":"","type":"uint256"},{"name":"","type":"bytes32"},{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_hercID","type":"uint256"}],"name":"getOriginTransCountByHercId","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_codeWord","type":"bytes32"},{"name":"_origOrgName","type":"bytes32"},{"name":"_recipOrgName","type":"bytes32"},{"name":"_hercId","type":"uint256"},{"name":"_origTransFctHash","type":"bytes32"},{"name":"_recipTransFctHash","type":"bytes32"}],"name":"newRecipTrans","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getRecipTransCountByAddress","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_codeWord","type":"bytes32"}],"name":"getRecipTransByCodeWord","outputs":[{"name":"","type":"bytes32"},{"name":"","type":"bytes32"},{"name":"","type":"uint256"},{"name":"","type":"bytes32"},{"name":"","type":"bytes32"},{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_hercID","type":"uint256"}],"name":"getRecipTransCountByHercId","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}],
 	emptyAddress: '0x0000000000000000000000000000000000000000',
 
 	// Local
-	//factoryAddress: "0x9fbda871d559710256a2502a2517b794b482db40",
+	factoryAddress: "0x9a771Df5cC030Aa0b2C9AE93d92bF24F7373299e",
 
 	// Mainnet
-    factoryAddress: "0x73b0856356279BdeAea503873EB8033F7311C671",
-					//0x73b0856356279BdeAea503873EB8033F7311C671
+    // factoryAddress: "0x73b0856356279BdeAea503873EB8033F7311C671",
+					
 	init: function() {
 		console.log('[x] Initializing DApp.');
 		this.initWeb3();
@@ -17,42 +17,32 @@ DApp = {
 	
 
 	initWeb3: function() {
-		window.addEventListener('load', async () => {
-                // Modern dapp browsers...
-                if (window.ethereum) {
-                    window.web3 = new Web3(ethereum);
-                    try {
-                        // Request account access if needed
-                        await ethereum.enable();
-                        // Acccounts now exposed
-                        OnCheckingDone();
-                    } 
-                    catch (error) {
-                        OnError("User denied access to Metamask for this app");
-                    }
-                }
-                // Legacy dapp browsers...
-                else if (window.web3) {
-                    window.web3 = new Web3(web3.currentProvider);
-                    // Acccounts always exposed
-                    OnCheckingDone();
-                }
-                // Non-dapp browsers...
-                else {
-                    OnError('Non-Ethereum browser detected. You should consider trying MetaMask!');
-                }
-        });
-          	function OnCheckingDone()
-    	{
-    		if(typeof(window.web3.eth.accounts[0]) == 'undefined')
-    		{
-    			OnError("Please log into Metamask to access the Registrar.");
-    		}
-    	}
-    	function OnError(message)
-    	{
-            document.getElementById("web3Error").style.visibility = "visible";
-    	}},
+		window.addEventListener('load', () => {
+			// If web3 is not injected
+			if (typeof web3 === 'undefined') {
+				// Listen for provider injection
+				window.addEventListener('message', ({ data }) => {
+					if (data && data.type && data.type === 'ETHEREUM_PROVIDER_SUCCESS') {
+						// Use injected provider
+						web3 = new Web3(ethereum);
+						console.log('[x] web3 object initialized.');
+						DApp.initContracts();
+					} else {
+						// No web3 instance available show a popup
+						$('#metamaskModal').modal('show');
+					}
+				});
+				// Request provider
+				window.postMessage({ type: 'ETHEREUM_PROVIDER_REQUEST' }, '*');
+			}
+			// If web3 is injected use it's provider
+			else {
+				web3 = new Web3(web3.currentProvider);
+				console.log('[x] web3 object initialized.');
+				DApp.initContracts();
+			}
+		});
+	},
 
 	initContracts: function() {
 		DApp.factoryContract = new web3.eth.Contract(DApp.factoryAbi, DApp.factoryAddress);
