@@ -86,6 +86,7 @@ DApp = {
 			})
 	},
 
+
 	newSubdomain: function(subdomain, domain, topdomain, owner, target) {
 		DApp.factoryContract.methods.newSubdomain(
 			subdomain, domain, topdomain, owner, target).send(
