@@ -154,7 +154,7 @@ DApp = {
 	initFrontend: function(){
 		$('#owner').val(DApp.currentAccount);
 		$('#target').val(DApp.currentAccount);
-		$("#domain").append("<option value='freedomain'>freedomain</option>");
+		$("#domain").append("<option value='freedomain'>hercigvc</option>");
         $("#topdomain").append("<option value='eth'>eth</option>");
 	},
 
@@ -165,7 +165,8 @@ DApp = {
 		if($('#subdomain').val().length > 0) {
 			DApp.checkSubdomainOwner(
 				$('#subdomain').val(),
-				$('#domain option').filter(":selected").val()
+				$('#domain option').filter(":selected").val(),
+				'eth'
 				);
 		}
 	}
