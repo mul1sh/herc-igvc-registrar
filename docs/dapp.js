@@ -88,10 +88,16 @@ DApp = {
 
 
 	newSubdomain: function(subdomain, domain, topdomain, owner, target) {
+		console.log(subdomain)
+		console.log(domain)
+		console.log(topdomain)
+		console.log(owner)
+		console.log(target)
+
 		DApp.factoryContract.methods.newSubdomain(
 			subdomain, domain, topdomain, owner, target).send(
 			{
-				gas: 150000,
+				gas: 300000,
 				from: DApp.currentAccount
 			},
 			function(error, result){
@@ -137,8 +143,9 @@ DApp = {
 			DApp.newSubdomain(
 				$('#subdomain').val(),
 				$('#domain option').filter(":selected").val(),
+				'eth',
 				$('#owner').val(),
-				$('#target').val()
+				'0x314159265dD8dbb310642f98f50C066173C1259b'
 			);
 		});
 	},
@@ -154,7 +161,7 @@ DApp = {
 	initFrontend: function(){
 		$('#owner').val(DApp.currentAccount);
 		$('#target').val(DApp.currentAccount);
-		$("#domain").append("<option value='freedomain'>hercigvc</option>");
+		$("#domain").append("<option value='hercigvc'>hercigvc</option>");
         $("#topdomain").append("<option value='eth'>eth</option>");
 	},
 
