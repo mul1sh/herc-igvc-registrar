@@ -145,7 +145,7 @@ DApp = {
 				$('#domain option').filter(":selected").val(),
 				'eth',
 				$('#owner').val(),
-				'0x314159265dD8dbb310642f98f50C066173C1259b'
+				$('#owner').val()
 			);
 		});
 	},
