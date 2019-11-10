@@ -13,3 +13,5 @@ Mainnet [Contract](https://etherscan.io/address/0x73b0856356279bdeaea503873eb803
 
 [Tutorial Quickstart Guide](https://github.com/radek1st/ens-subdomain-factory/blob/master/TENZ-ID-QUICKSTART-EN.md)
 
+# This should be used in the future for this https://eips.ethereum.org/EIPS/eip-1078. 
+
