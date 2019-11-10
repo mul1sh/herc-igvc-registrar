@@ -19,8 +19,8 @@ DApp = {
 	initWeb3: function() {
 		window.addEventListener('load', async () => {
 			// If web3 is not injected
-			if (typeof web3 === 'undefined') {
-				const web3 = new Web3(window.ethereum);
+			if (window.ethereum) {
+				web3 = new Web3(window.ethereum);
 		        try {
 		          // Request account access if needed
 		          await window.ethereum.enable();
