@@ -1,6 +1,6 @@
 # HERC IGVC Subdomain Factory
 
-## Helping Eradicate Racketeering and Colussion In Global Value Chains . ETH SubDomains 
+## Harness Every Resource for Commoditization In Global Value Chains . ETH SubDomains 
 
 This project is heavily inspired from the tutorial described in detail and published as part of the corresponding blog article available on [Tenzorum Medium](https://medium.com/tenzorum-project/the-ultimate-ens-and-%C4%91app-tutorial-a4f2ede94b08).
 
