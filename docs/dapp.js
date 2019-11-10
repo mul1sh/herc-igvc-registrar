@@ -17,23 +17,19 @@ DApp = {
 	
 
 	initWeb3: function() {
-		window.addEventListener('load', () => {
+		window.addEventListener('load', async () => {
 			// If web3 is not injected
 			if (typeof web3 === 'undefined') {
-				// Listen for provider injection
-				window.addEventListener('message', ({ data }) => {
-					if (data && data.type && data.type === 'ETHEREUM_PROVIDER_SUCCESS') {
-						// Use injected provider
-						web3 = new Web3(ethereum);
-						console.log('[x] web3 object initialized.');
-						DApp.initContracts();
-					} else {
-						// No web3 instance available show a popup
-						$('#metamaskModal').modal('show');
-					}
-				});
-				// Request provider
-				window.postMessage({ type: 'ETHEREUM_PROVIDER_REQUEST' }, '*');
+				const web3 = new Web3(window.ethereum);
+		        try {
+		          // Request account access if needed
+		          await window.ethereum.enable();
+		          // Accounts now exposed
+		         DApp.initContracts();
+		        } catch (error) {
+		         console.error("[x] Error connecting to metamask", error);
+		        }
+				
 			}
 			// If web3 is injected use it's provider
 			else {
