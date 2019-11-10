@@ -8,14 +8,13 @@ DApp = {
 	//factoryAddress: "0xA202F2D44302CC0e68Ee7E230C0E038b96ABC96B",
 
 	// Mainnet
-     factoryAddress: "0x5B268cafcE26c26331476C436Afe7A7A35601336",
+    factoryAddress: "0x5B268cafcE26c26331476C436Afe7A7A35601336",
 					
 	init: function() {
 		console.log('[x] Initializing DApp.');
 		this.initWeb3();
 	},
 	
-
 	initWeb3: function() {
 		window.addEventListener('load', async () => {
 			// If web3 is not injected
